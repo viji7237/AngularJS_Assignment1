@@ -1,0 +1,94 @@
+
+
+<html ng-app='app'>
+<head>
+	<title>AngularJs - Assignment One -  ToDo List</title>
+</head>
+
+<body ng-controller='ToDoCtrl as todo'>
+
+<h2>{{todo.ApplicationTitle}}</h2>
+
+<br />
+
+<div>
+	<div style=float:left>
+		<b>User :</b>&nbsp;
+	</div>
+	<div style=float:left>
+		<input id='User' type=text ng-model='todo.User'></input>&nbsp;
+	</div>
+	
+	<div style=float:left>
+		<b>Activity :</b>&nbsp;
+	</div>
+	<div style=float:left>
+		<input type=text id='Activity' ng-model='todo.Activity' ></input>&nbsp;
+	</div>
+	<div style=float:left>
+		<button >Add</button>&nbsp;
+	</div>
+</div>
+
+<div>
+	<div ></div>
+</div>
+
+<script src="https://code.angularjs.org/1.5.8/angular.min.js"></script>
+
+<script type="text/javascript">
+
+	var appModule = angular.module('app',[]);
+
+	appModule.controller('ToDoCtrl',[function(){
+
+		var ToDo =  this;
+
+		function init(){
+			ToDo.ApplicationTitle = 'ToDo List';
+			ToDo.UserActivity = [];
+			ToDo.reset();
+		}
+
+		ToDo.Reset = function (){
+			ToDo.User = '';
+			ToDo.Activity = '';	
+		}
+		
+		ToDo.AddUserActivity = function(){
+			var User = ToDo.AddUser(ToDo.User);
+			var response  = ToDo.AddItem(User);
+		}
+
+		ToDo.AddUser = function(user){
+
+			var result = ToDo.UserActivity.find(function(obj){
+				if(obj.User == user ) {
+					return obj;
+				}
+			});
+
+			if(result == undefined){
+				var index = ToDo.UserActivity.push({
+					User:user,
+					Activity:[]
+				});
+				return ToDo.UserActivity[index - 1];
+			}
+			else{
+				return result;
+			}
+
+		}
+
+		ToDo.AddItem = function(user){
+			user.
+		}
+	
+	}])
+
+</script>
+
+</body>
+
+</html>
